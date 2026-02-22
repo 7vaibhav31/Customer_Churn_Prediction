@@ -1,5 +1,9 @@
 # Customer Churn Prediction
 
+
+
+Deploy Link : https://customerchurnprediction-eva8nsxcwmcnrjqjzohp9z.streamlit.app/
+
 This repository contains code for a customer churn prediction project.
 
 Structure:
