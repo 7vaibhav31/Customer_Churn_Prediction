@@ -44,12 +44,23 @@ st.markdown("""
 @st.cache_resource
 def load_models():
     try:
-        preprocessor = joblib.load('preprocessor.joblib')
-        model = tf.keras.models.load_model('keras_model.keras')
+        # Try to load from repo root first, then from app directory if running locally
+        import os
+        repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        preprocessor_path = os.path.join(repo_root, 'preprocessor.joblib')
+        model_path = os.path.join(repo_root, 'keras_model.keras')
+        
+        if not os.path.exists(preprocessor_path):
+            preprocessor_path = 'preprocessor.joblib'
+        if not os.path.exists(model_path):
+            model_path = 'keras_model.keras'
+        
+        preprocessor = joblib.load(preprocessor_path)
+        model = tf.keras.models.load_model(model_path)
         return preprocessor, model
     except FileNotFoundError as e:
         st.error(f"❌ Model files not found: {e}")
-        st.error("Please run train_model.py first to train and save the models.")
+        st.error("Please ensure preprocessor.joblib and keras_model.keras are in the repository root.")
         st.stop()
 
 
