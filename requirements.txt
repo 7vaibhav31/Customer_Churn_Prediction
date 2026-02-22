@@ -3,9 +3,8 @@ kagglehub
 matplotlib
 numpy
 pandas
-protobuf>=4.0.0
 scikeras
 scikit-learn
 seaborn
-streamlit>=1.40.0
+streamlit
 tensorflow
