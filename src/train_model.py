@@ -16,7 +16,12 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from scikeras.wrappers import KerasClassifier
 
-from preprocessing import preprocess_pipeline
+# Support both package-style import (when running as a module) and
+# standalone import (when running the script directly).
+try:
+    from src.preprocessing import preprocess_pipeline
+except Exception:
+    from preprocessing import preprocess_pipeline
 
 warnings.filterwarnings('ignore')
 

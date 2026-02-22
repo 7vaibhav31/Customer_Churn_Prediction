@@ -12,6 +12,7 @@ Structure:
 - `requirements.txt` - project dependencies
 
 Usage
+
 1. Create and activate a Python virtual environment:
 
 ```powershell
@@ -25,16 +26,40 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-3. Train the model (optional):
+3. Train the model (recommended run as module to use package imports):
 
 ```powershell
-python src/train_model.py
+python -m src.train_model
 ```
 
-4. Run the Streamlit app:
+4. Run the Streamlit app (start with the venv Python):
 
 ```powershell
-python -m streamlit run app/streamlit_app.py
+.\venv\Scripts\python -m streamlit run app/streamlit_app.py
 ```
 
-Sample batch file: `test_data/sample_batch.csv`
+Sample batch file: test_data/sample_batch.csv
+
+Push to GitHub
+
+- Create a remote repository on GitHub and add it as a remote:
+
+```powershell
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+git push -u origin main
+```
+
+- If you prefer using a Personal Access Token (PAT), use the URL format:
+
+```
+https://<TOKEN>@github.com/<your-username>/<repo-name>.git
+```
+
+CI
+
+- This repo includes a simple GitHub Actions workflow `.github/workflows/python-lint.yml` that runs `flake8` on `src/` on push and pull requests.
+
+Notes
+
+- Run Streamlit with the venv Python to ensure TensorFlow is available.
+- If you want, I can add a full CI that installs dependencies and runs tests — tell me if you'd like that.
