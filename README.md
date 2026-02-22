@@ -63,3 +63,15 @@ Notes
 
 - Run Streamlit with the venv Python to ensure TensorFlow is available.
 - If you want, I can add a full CI that installs dependencies and runs tests — tell me if you'd like that.
+
+Deploying to Streamlit Community Cloud
+
+- Go to https://share.streamlit.io and sign in.
+- Click "New app" → Connect to GitHub → select the `7vaibhav31/Customer_Churn_Prediction` repository.
+- Set the app file path to `app/streamlit_app.py` and the branch to `main`.
+- Use the default Python environment, or set `Python` to `3.10` in the UI if available.
+
+Notes about model artifacts
+
+- This repo includes the trained artifacts `preprocessor.joblib`, `pipeline.joblib`, and `keras_model.keras` in the repository root so the Streamlit app can load them at runtime. If you retrain the model locally, re-run `src/train_model.py` and commit the updated artifacts.
+
